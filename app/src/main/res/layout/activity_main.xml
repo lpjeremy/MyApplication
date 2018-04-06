@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.lpjeremy.myapplication.MainActivity">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="动态权限"
+        android:id="@+id/txtPermission"/>
+
+    <LinearLayout
+        android:id="@+id/layoutPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnPaiZhao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="点我拍照" />
+
+        <Button
+            android:id="@+id/btnLuyin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开相册"
+            app:layout_constraintTop_toBottomOf="@id/btnPaiZhao" />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:id="@+id/btnOne"/>
+
+
+</LinearLayout>
