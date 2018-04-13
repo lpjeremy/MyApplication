@@ -5,33 +5,41 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.lpjeremy.myapplication.base.BaseActivity;
 import com.lpjeremy.permissionlibrary.request.IRequestPermissions;
 import com.lpjeremy.permissionlibrary.request.RequestPermissions;
 import com.lpjeremy.permissionlibrary.requestresult.IRequestPermissionResult;
 import com.lpjeremy.permissionlibrary.requestresult.PermissionResult;
 import com.lpjeremy.permissionlibrary.requestresult.RequestPermissionResult;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "NBA";
-
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+    /***
+     * 动态权限申请类
+     */
     private IRequestPermissions requestPermissions = RequestPermissions.getInstance();
+    /**
+     * 动态权限申请结果
+     */
     private IRequestPermissionResult requestPermissionResult = RequestPermissionResult.getInstance();
+
     LinearLayout layoutPermission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogE("onCreate(AActivity)");
         setContentView(R.layout.activity_main);
         layoutPermission = findViewById(R.id.layoutPermission);
         findViewById(R.id.btnPaiZhao).setOnClickListener(this);
         findViewById(R.id.btnLuyin).setOnClickListener(this);
         findViewById(R.id.txtPermission).setOnClickListener(this);
+        findViewById(R.id.btnLife).setOnClickListener(this);
+
 
     }
 
@@ -49,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, 10002);
                 } else {
-                    Log.e(TAG, "没有拍照的权限");
+                    LogE("没有拍照的权限");
                 }
                 break;
             case R.id.btnLuyin:
@@ -62,8 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent.addCategory("android.intent.category.DEFAULT");
                     startActivityForResult(intent, 10003);
                 } else {
-                    Log.e(TAG, "没有打开相册的权限");
+                    LogE("没有打开相册的权限");
                 }
+                break;
+            case R.id.btnLife:
+                startActivity(new Intent(mContext, BActivity.class));
                 break;
         }
 
@@ -102,5 +113,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LogE("onStart(AActivity)");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LogE("onResume(AActivity)");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LogE("onPause(AActivity)");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LogE("onStop(AActivity)");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LogE("onDestroy(AActivity)");
+    }
 }
 
